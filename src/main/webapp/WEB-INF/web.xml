@@ -1,0 +1,58 @@
+<?xml versiion="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+          http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+  <display-name>Archetype Created Web Application</display-name>
+  <!--welcome pages-->
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <!--当系统出现404错误，跳转到页面NoPage.html-->
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/error.html</location>
+  </error-page>
+  <!--会话超时配置，单位分钟-->
+  <session-config>
+    <session-timeout>360</session-timeout>
+  </session-config>
+
+  <!--Spring框架给我们提供过滤器CharacterEncodingFilter
+  这个过滤器就是这对于每次浏览器请求进行过滤的，然后再其之上添加了父类没有的功能即处理字符编码。
+  其中encoding用来设置编码格式，forceEncoding用来设置是否例会 request.getCharacterEncoding()方法，设置为true则强制覆盖之前的编码格式-->
+  <fileter>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </fileter>
+  <filter-mapping>
+    <filter-name>characterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <!--项目中使用Spring时，applicationContext.xml配置文件中并没有BeanFactory,要想在业务层中的class文件中直接引用Spring容器管理的bean可通过以下方式-->
+  <!--1、在web.xml配置监听器ContextLoaderListener.ContextLoaderListener的作用就是启动Web容器时，自动装配ApplicationContext的配置信息。因为它实现了ServletContextListener这个接口
+  ，在web.xml配置这个监听器，启动容器时，就会默认执行它实现的方法。
+  在ContextLoaderListener中关联了ContextLoader这个类，所以整个加载配置过程由ContextLoader来完成。-->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <!--2、部署applicationContext的xml文件。如果在web.xml中不写任何参数配置信息，默认的路径时"/WEB-INF/applicationContext.xml"
+  在WEB-INF目录下创建的xml文件的名称必须是applicatiionContext.xml。
+  如果是要自定义文件名可以在web.xml里加入contextConfigLocation这个context参数；
+  在<param-value></param-value>里指定相应的xml文件名，如果有多个xml文件，可以写在一起以","号分隔，
+  也可以这样applicationContext-*.xml采用通配符，匹配的文件都会一同被载入。
+  在ContextLoaderListener中关联了ContextLoader这个类，所以整个加载配置过程由ContextLoader来完成-->
+  <context-param>
+    <param-name>ContextConfigLocation</param-name>
+    <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+</web-app>
