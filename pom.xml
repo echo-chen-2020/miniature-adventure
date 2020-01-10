@@ -109,6 +109,7 @@
       <groupId>javax.servlet</groupId>
       <artifactId>servlet-api</artifactId>
       <version>3.0-alpha-1</version>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
@@ -205,6 +206,7 @@
     </resources>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
+        <!--项目自带的 start（网上找的资料说是自动带出来的）-->
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
@@ -234,6 +236,7 @@
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
         </plugin>
+        <!--创建项目自带的 end（网上找的资料说是自带的）-->
       </plugins>
     </pluginManagement>
     <plugins>

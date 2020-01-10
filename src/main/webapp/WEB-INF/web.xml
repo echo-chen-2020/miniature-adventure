@@ -1,4 +1,4 @@
-<?xml versiion="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
@@ -22,8 +22,8 @@
   <!--Spring框架给我们提供过滤器CharacterEncodingFilter
   这个过滤器就是这对于每次浏览器请求进行过滤的，然后再其之上添加了父类没有的功能即处理字符编码。
   其中encoding用来设置编码格式，forceEncoding用来设置是否例会 request.getCharacterEncoding()方法，设置为true则强制覆盖之前的编码格式-->
-  <fileter>
-    <filter-name>CharacterEncodingFilter</filter-name>
+  <filter>
+    <filter-name>characterEncodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
     <init-param>
       <param-name>encoding</param-name>
@@ -33,7 +33,7 @@
       <param-name>forceEncoding</param-name>
       <param-value>true</param-value>
     </init-param>
-  </fileter>
+  </filter>
   <filter-mapping>
     <filter-name>characterEncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
@@ -46,7 +46,7 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   <!--2、部署applicationContext的xml文件。如果在web.xml中不写任何参数配置信息，默认的路径时"/WEB-INF/applicationContext.xml"
-  在WEB-INF目录下创建的xml文件的名称必须是applicatiionContext.xml。
+  在WEB-INF目录下创建的xml文件的名称必须是applicationContext.xml。
   如果是要自定义文件名可以在web.xml里加入contextConfigLocation这个context参数；
   在<param-value></param-value>里指定相应的xml文件名，如果有多个xml文件，可以写在一起以","号分隔，
   也可以这样applicationContext-*.xml采用通配符，匹配的文件都会一同被载入。
