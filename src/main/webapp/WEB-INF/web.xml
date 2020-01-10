@@ -52,7 +52,7 @@
   也可以这样applicationContext-*.xml采用通配符，匹配的文件都会一同被载入。
   在ContextLoaderListener中关联了ContextLoader这个类，所以整个加载配置过程由ContextLoader来完成-->
   <context-param>
-    <param-name>ContextConfigLocation</param-name>
+    <param-name>contextConfigLocation</param-name>
     <param-value>classpath:applicationContext.xml</param-value>
   </context-param>
 
