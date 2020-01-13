@@ -101,7 +101,7 @@
     <url-pattern>*.map</url-pattern>
   </servlet-mapping>
 
-  <!--使用Spring MVC,peizhi DispatcherServlet是第一步。DispatcherServlet是第一个Servlet,所以可以配
+  <!--使用Spring MVC,配置 DispatcherServlet是第一步。DispatcherServlet是第一个Servlet,所以可以配
   置多个DispatcherServlet-->
   <!--DispatcherServlet是前端控制器，配置在web.xml文件中的。拦截匹配请求，Servlet拦截匹配规则要自己定义，把拦截下来的请求，
   依据某某规则分发到目标Controller(我们写的Action)来处理。-->

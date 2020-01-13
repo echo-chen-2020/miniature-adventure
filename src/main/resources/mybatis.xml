@@ -9,9 +9,9 @@
         <setting name="cacheEnabled" value="true"/>
         <!--延迟加载的全局开关。当开启时，所有关联对象都会延迟加载。特定关联关系中可通过设置fetchType
         属性来覆盖该项的开关状态。默认false-->
-        <setting name="lazyLoadingEnable" value="true"/>
+        <setting name="lazyLoadingEnabled" value="true"/>
         <!--是否允许单一语句返回多结果集（需要兼容驱动）。默认true-->
-        <setting name="multipleResultSetsEnable" value="true"/>
+        <setting name="multipleResultSetsEnabled" value="true"/>
         <!--使用标签代替列名。不同的驱动在这方面会有不同的表现，具体可参考相关驱动文档或通过测试这两
         种不同的模式来观察所用驱动的结果，默认teue-->
         <setting name="useColumnLabel" value="true"/>
@@ -31,7 +31,7 @@
         <!--为驱动的结果集获取数量（fetchSize）设置一个提示值。此参数只可以在查询设置中被覆盖-->
         <setting name="defaultFetchSize" value="100"/>
         <!--允许在嵌套语句中使用分页（RowBounds）.If allow,set the false.-->
-        <setting name="safeRowBoundEnable" value="false"/>
+        <setting name="safeRowBoundsEnabled" value="false"/>
         <!--是否开启自动驼峰命名规则（camel case）映射，即从经典数据库列名 A_COLUMN 到经典Java属性名aColumn的类似映射-->
         <setting name="mapUnderscoreToCamelCase" value="false"/>
         <!--MyBatis利用本地缓存机制（Local Cache）防止循环引用（circular references）和加速重复嵌套查询

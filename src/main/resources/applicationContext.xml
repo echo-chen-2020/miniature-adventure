@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:context="http://www.springframwork.org/schema/context"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:p="http://www.springframework.org/schema/p"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd
@@ -13,8 +10,7 @@
     http://www.springframework.org/schema/tx
     http://www.springframework.org/schema/tx/spring-tx.xsd
     http://www.springframework.org/schema/aop
-    http://www.springframework.org/schema/aop/spring-aop.xsd
-    http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+    http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!--自动扫描SpringMVC包，将带有注解的类 纳入spring容器管理-->
     <context:component-scan base-package="com.example"/>
@@ -31,7 +27,7 @@
 
     <!--dataSource 配置-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
-          destory-method="close">
+          destroy-method="close">
         <!--基本属性url、user、password-->
         <property name="driverClassName" value="${jdbc.driver}"/>
         <property name="url" value="${jdbc.url}"/>
@@ -97,7 +93,7 @@
             <tx:method name="select*" read-only="true"/>
             <tx:method name="count*" read-only="true"/>
             <!--对其他方法 使用默认的事务管理-->
-            <tx:method name="*">
+            <tx:method name="*"/>
         </tx:attributes>
     </tx:advice>
 
@@ -106,6 +102,7 @@
         <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods"/>
     </aop:config>
 
+    <!--配置使Spring采用CGLIB代理-->
     <!--配置使Spring采用CGLIB代理-->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 

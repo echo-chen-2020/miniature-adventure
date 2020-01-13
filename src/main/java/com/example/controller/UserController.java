@@ -6,6 +6,7 @@ import com.example.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+@Controller
+@RequestMapping(value="/user")
 public class UserController extends GenericController {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
@@ -31,7 +34,7 @@ public class UserController extends GenericController {
         //将得到的用户列表内容添加到ModelAndView中
         modelAndView.addObject("users",userList);
         //设置相应的jsp视图
-        modelAndView.setViewName("getUsers");
+        modelAndView.setViewName("getUser");
         LOGGER.info("=============query successfully!");
 
         return modelAndView;
